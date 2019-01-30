@@ -2,6 +2,10 @@
 # Created by https://www.gitignore.io/api/c,c++,java
 # Edit at https://www.gitignore.io/?templates=c,c++,java
 
+*
+!/**/
+!*.*
+
 ### C ###
 # Prerequisites
 *.d
