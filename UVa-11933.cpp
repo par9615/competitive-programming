@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-
+//I didn't read well the problem at the begining
 int main()
 {
     unsigned int n, a, b;
