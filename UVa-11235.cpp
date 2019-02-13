@@ -3,7 +3,8 @@
 using namespace std;
 
 int st[(100000+5)*2];
-int a[100000+5];
+int a[100000+5], fr[100000+5];
+int n, q;
 
 int left(int p)
 {
@@ -17,21 +18,14 @@ int right(int p)
 
 void build(int L, int R, int p)
 {
-    if(L == R)
-        st[p] = L;
-    else
-    {
-        build(L, (L+R)/2, left(p));
-        build((L+R)/2+1, R, right(p));
-        int p1 = st[left(p)];
-        int p2 = st[right(p)];
-        st[p] = (a[p1] >= a[p2])? p1 : p2;
-    }
+}
+
+int query(int L, int R, int i, int j, int p)
+{
 }
 
 int main()
 {
-    int n, q;
 
     while(cin>>n, n)
     {
@@ -46,11 +40,19 @@ int main()
             {
                 int f = i-j;
                 while(j < i)
-                    a[j++] = f;
+                    fr[j++] = f;
             }                    
         }
 
-        
+        build(0, n-1, 1);
+
+        int a, b;
+        for(int i = 0; i < q; i++)
+        {
+            cin>>a>>b;
+            cout<<query(0, n-1, a, b, 1)<<endl;
+       }
+
 
     }
     
