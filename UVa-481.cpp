@@ -1,35 +1,40 @@
-#include<iostream>
-#include<string>
-#include<algorithm>
-#include<iomanip>
-#include<map>
-#include<vector>
-#include<cmath>
-#include<utility>
-#include<cstring>
-#include<climits>
+#include <iostream>
 
 using namespace std;
+int a[1000000], back[1000000], backi[1000000], p[1000000], L, Li;
 
-typedef long long ll;
-typedef pair<int, int> ii;
-typedef vector<int> vi;
-typedef vector<ii> vii;
+void print(int index)
+{
+    if(index < 0)
+        return;
 
+    print(p[index]);
+    
+    cout<<a[index]<<endl;
+    
+}
 
 int main(){
-
-	int myints[] = {10,20,30,30,20,10,10,20};
-  	std::vector<int> v(myints,myints+8);           // 10 20 30 30 20 10 10 20
-
-  	std::sort (v.begin(), v.end());                // 10 10 10 20 20 20 30 30
-
-  	std::vector<int>::iterator low,up;
-  	low=std::lower_bound (v.begin(), v.end(), 25); //          ^
-  	up= std::upper_bound (v.begin(), v.end(), 20); //                   ^
-
-  	std::cout << "lower_bound at position " << (low- v.begin()) << '\n';
-  	std::cout << "upper_bound at position " << (up - v.begin()) << '\n';
-
-	return 0;
+	
+    int i = 0;
+    
+    L = Li = 0;
+    while(cin>>a[i])
+    {
+        int pos = lower_bound(back, back+L, a[i])-back;
+        back[pos] = a[i];
+        backi[pos] = i;
+        p[i] = pos>0? backi[pos-1] : -1;
+        if(pos == L)
+        {
+            L++;
+            Li = i;
+        }
+        
+        i++;
+    }
+    
+    cout<<L<<"\n-\n";
+    print(Li);
+    
 }
