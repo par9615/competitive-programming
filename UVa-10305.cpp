@@ -22,7 +22,7 @@ void dfs(int u)
 
 void topological_sort()
 {
-    memset(G, 0, sizeof(int)*105*105);
+    
     memset(visited, 0, sizeof(visited));
     
     for(int i = 1; i <= n; i++)
@@ -46,6 +46,7 @@ int main()
     while(cin>>n>>m, n || m)
     {
         int u, v;
+        memset(G, 0, sizeof(G[0][0])*105*105);
         for(int i = 0; i < m; i++)
         {
             cin>>u>>v;
