@@ -9,9 +9,11 @@ bool can_split(long long n, long long k)
     {
         slice = n/k;
         n-=slice;
-        n--;
-    }
 
+        if((n%k) != 0)
+            n-=(n%k);
+    }
+    cout<<"chale "<<n<<" "<<k<<endl;
     return (n == k);
 }
 
@@ -25,7 +27,7 @@ int main()
 
         for(int i = n-1; i > 0; i--)
         {
-            if(i&1)
+            //if(i&1)
                 if(can_split(n, i))
                 {
                     cout<<i<<" people"<<endl;
